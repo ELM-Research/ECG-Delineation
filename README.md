@@ -1,5 +1,5 @@
-# ECG-Segmentation
-12-Lead ECG Segmentation with a Neural Network
+# DECODER DESIGN MATTERS FOR ECG DELINEATION
+Official Implementation of R-U-Net as proposed in DECODER DESIGN MATTERS FOR ECG DELINEATION by Joseph Scharpf, William Han, Chaojing Duan, Michael A. Rosenberg, Emerson Liu, Ding Zhao.
 
 ## Installation
 
