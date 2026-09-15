@@ -1,0 +1,3 @@
+[submodule "semi-seg-ecg"]
+	path = semi-seg-ecg
+	url = https://github.com/ELM-Research/semi-seg-ecg.git
