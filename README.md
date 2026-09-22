@@ -21,9 +21,13 @@ Please feel free to contribute to the repository! If there are any questions or 
 
 ## Installation
 
-1. Clone the repo, `cd` into it, and `uv sync`.
+1. Clone the repo, `cd` into it.
 
-2. `source .venv/bin/activate`
+2. `git submodule update --init --recursive`
+
+3. `uv sync`
+
+4. `source .venv/bin/activate`
 
 ## Data Preparation
 
