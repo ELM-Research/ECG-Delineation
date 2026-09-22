@@ -1,5 +1,3 @@
-# DECODER DESIGN MATTERS FOR ECG DELINEATION
-
 <h2 align="center">
   Decoder Design Matters for ECG Delineation
 </h2>
