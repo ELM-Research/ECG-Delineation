@@ -8,12 +8,16 @@
 
 
 # Overview
-Official Implementation of R-U-Net as proposed in DECODER DESIGN MATTERS FOR ECG DELINEATION by Joseph Scharpf, William Han, Chaojing Duan, Michael A. Rosenberg, Emerson Liu, Ding Zhao.
+Official Implementation of R-U-Net as proposed in [DECODER DESIGN MATTERS FOR ECG DELINEATION by Joseph Scharpf, William Han, Chaojing Duan, Michael A. Rosenberg, Emerson Liu, Ding Zhao](https://arxiv.org/abs/2609.16489).
 
 This repository is largely a thin wrapper around the [SemiSegECG](https://dl.acm.org/doi/10.1145/3746252.3760790).
 Currently, we plan to constrain the repository's features to only new models and SSL methods we develop within the SemiSegECG framework.
 
+We provide a [simple demo](https://ecg-neurips-demo.vercel.app/) of R-U-Net's performance compared against a rules-based method (Pan Tompkins) and human delineation annotations. Feel free to check it out!
+
 We plan to release model checkpoints after paper acceptance!
+
+Please feel free to contribute to the repository! If there are any questions or bugs, please do not hesitate to reach out to wjhan{@}andrew{dot}cmu{edu} or submit an issue with corresponding details.
 
 ## Installation
 
