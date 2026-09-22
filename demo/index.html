@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ECG Delineation with Deep Learning</title>
+  <link rel="stylesheet" href="css/app.css?v=50">
+</head>
+<body>
+  <header>
+    <div class="brand-logos">
+      <a href="https://www.cmu.edu/" target="_blank" rel="noopener noreferrer">
+        <img src="cmu_official.webp" alt="Carnegie Mellon University" width="92" height="92">
+      </a>
+      <a href="https://www.ahn.org/" target="_blank" rel="noopener noreferrer">
+        <img src="alleghany_official.webp" alt="Allegheny Health Network" width="92" height="92">
+      </a>
+      <a href="https://www.cuanschutz.edu/" target="_blank" rel="noopener noreferrer">
+        <img src="colorado_official.webp" alt="University of Colorado" width="92" height="92">
+      </a>
+    </div>
+    <div class="brand-end">
+      <div class="brand-copy">
+        <h1>ECG Delineation with Deep Learning</h1>
+        <p class="authors">Joseph Scharpf<sup>*</sup>, William Han<sup>*</sup>, Chaojing Duan, Michael A. Rosenberg, Emerson Liu, Ding Zhao</p>
+        <p class="lede">P / QRS / T are slow to mark by hand. A neural-net draft you can correct.</p>
+      </div>
+      <a class="paper-qr" href="https://github.com/ELM-Research/ECG-Delineation" target="_blank" rel="noopener noreferrer">
+        <img src="paper_qr.webp" alt="QR code to the paper" width="96" height="96">
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section id="panel-anno">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <div class="seg" role="group" aria-label="Draft">
+            <button type="button" id="draft-rules">Rules</button>
+            <button type="button" id="draft-runet">R-U-Net</button>
+            <button type="button" id="draft-gt">Ground truth</button>
+          </div>
+          <button type="button" id="reset-anno" class="play">Reset</button>
+        </div>
+        <button type="button" id="new-example" class="play">New example</button>
+      </div>
+
+      <div id="anno-missing" class="missing" hidden>
+        Missing <code>data/test.js</code>.
+      </div>
+      <div id="anno-plot-wrap" class="anno-plot-wrap">
+        <div id="anno-plot" class="plot anno-plot"></div>
+        <button type="button" id="band-delete" class="band-delete" hidden aria-label="Delete this interval">
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+            <path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div id="anno-cta" class="anno-cta" hidden>
+          <div class="seg anno-wave" role="group" aria-label="Wave">
+            <button type="button" id="wave-P" class="active">P</button>
+            <button type="button" id="wave-QRS">QRS</button>
+            <button type="button" id="wave-T">T</button>
+          </div>
+          <span class="anno-cta-text">Click to annotate</span>
+          <button type="button" id="submit-anno" class="play anno-submit">Submit</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="vendor/plotly.min.js"></script>
+  <script src="data/test.js?v=4"></script>
+  <script src="js/intervals.js?v=3"></script>
+  <script src="js/pan_tompkins.js?v=1"></script>
+  <script src="js/charts.js?v=17"></script>
+  <script src="js/app.js?v=38"></script>
+</body>
+</html>
