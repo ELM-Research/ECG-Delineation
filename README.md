@@ -13,7 +13,7 @@ Official Implementation of R-U-Net as proposed in [DECODER DESIGN MATTERS FOR EC
 This repository is largely a thin wrapper around the [SemiSegECG](https://dl.acm.org/doi/10.1145/3746252.3760790).
 Currently, we plan to constrain the repository's features to only new models and SSL methods we develop within the SemiSegECG framework.
 
-We provide a simple demonstration of R-U-Net's performance compared against a rules-based method (Pan Tompkins) and human delineation annotations. Feel free to check it out by opening the `demo/index.html` file or checking out [this link](ecg-seg-demo.vercel.app)! All predictions are precomputed.
+We provide a simple demonstration of R-U-Net's performance compared against a rules-based method (Pan Tompkins) and human delineation annotations. Feel free to check it out by opening the `demo/index.html` file or checking out [this link](https://ecg-seg-demo.vercel.app/)! All predictions are precomputed.
 
 We plan to release model checkpoints after paper acceptance!
 
