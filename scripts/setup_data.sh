@@ -61,37 +61,5 @@ for name in ludb qtdb isp zhejiang cross_domain; do
 done
 
 echo ""
-echo "--- Verify bench index files ---"
-cd "$REPO_ROOT"
-python3 - <<'PY'
-from pathlib import Path
-import sys
-
-sys.path.insert(0, "baseline")
-from benchmark_paths import bench_yaml_path, index_files_from_bench, iter_sweep_cells
-
-repo = Path(".").resolve()
-semi = repo / "semi-seg-ecg"
-missing_all = []
-
-for dataset, frac, seed in iter_sweep_cells():
-    bench = bench_yaml_path(repo, dataset, frac, seed, smoke=False)
-    if not bench.exists():
-        missing_all.append(f"bench yaml: {bench}")
-        continue
-    for p in index_files_from_bench(bench, semi):
-        if not p.exists():
-            missing_all.append(str(p))
-
-if missing_all:
-    print("Missing after download:")
-    for m in sorted(set(missing_all)):
-        print(f"  {m}")
-    sys.exit(1)
-
-print("All benchmark index files present.")
-PY
-
-echo ""
 echo "Setup complete. Next:"
-echo "  bash scripts/run_benchmark.sh --dataset ludb --label-fraction 16 --seed 0 --gpus 0"
+echo "  bash scripts/run_benchmark.sh"

@@ -1,3 +1,2 @@
-bash scripts/train.sh \
--f ../configs/base/fixmatch.yaml \
--o ../configs/bench/ludb/1over16.yaml
+#!/usr/bin/env bash
+exec bash "$(dirname "$0")/run_benchmark.sh" "$@"
