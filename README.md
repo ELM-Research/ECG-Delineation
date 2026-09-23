@@ -20,6 +20,8 @@ We plan to release model checkpoints after paper acceptance!
 Please feel free to contribute to the repository! If there are any questions or bugs, please do not hesitate to reach out to wjhan{@}andrew{dot}cmu{edu} or submit an issue with corresponding details.
 
 ## Installation
+We have tested the repository on 2 separate clusters: (1) with Ubuntu 20.04.6 NVIDIA RTX A6000 GPUS and (2) RHEL 8.10 NVIDIA H100 NVL GPUs. The current dependencies are with respect to the latter machine.
+
 
 1. Clone the repo, `cd` into it.
 
@@ -38,13 +40,29 @@ bash scripts/setup_data.sh
 ```
 
 ## Result Reproduction
+First
 
-Run the following for benchmarking:
+```
+cd semi-seg-ecg
+```
+
+Then run the following for benchmarking:
 
 ```bash
-cd semi-seg-ecg
 
-bash scripts/train.sh -f ../configs/base/resnet18/mean_teacher_boundary_aware.yaml -o ../configs/bench/isp/1over2.yaml
+bash scripts/train.sh \
+-f ../configs/base/resnet18/mean_teacher_boundary_aware.yaml \
+-o ../configs/bench/isp/1over2.yaml
+```
+
+To evaluate a saved checkpoint without retraining, run the following:
+
+```bash
+
+bash scripts/train.sh \
+-f ../configs/base/resnet18/mean_teacher_boundary_aware.yaml \
+-o ../configs/bench/isp/1over2.yaml \
+--model_path $PATH_TO_PTH
 ```
 
 ## Citations
