@@ -1,24 +1,28 @@
 [project]
-name = "ecg-segmentation"
+name = "semi-seg-ecg-main"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "torch==2.14.0",
-    "einops==0.8.2",
-    "mergedeep==1.3.4",
-    "numpy==2.4.6",
-    "pandas==3.0.6",
+    "mergedeep",
+    "einops",
+    "numpy",
+    "pandas",
     "PyYAML",
-    "scipy==1.17.1",
-    "torchvision==0.29.0",
-    "torchaudio==2.11.0",
-    "tensorboard==2.21.0",
-    "torchmetrics==1.9.0",
+    "scikit-learn",
+    "scipy",
+    "torch",
     "tqdm",
-    "wfdb==4.3.1"
+    "wfdb",
+    "tensorboard",
+    "torchmetrics",
 ]
 
-[tool.ruff.lint]
-select = ["ALL"]
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true

@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Config paths are relative to semi-seg-ecg/src.
 BASE_CONFIG="../configs/base/resnet18/mean_teacher_boundary_aware.yaml"
-BENCH_CONFIG="../configs/bench/ludb/1over16.yaml"
+BENCH_CONFIG="../configs/bench/isp/1over2.yaml"
 MODE="single"  # single | distributed
 
 if [[ $# -ne 0 ]]; then
