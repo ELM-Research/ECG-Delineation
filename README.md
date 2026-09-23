@@ -39,91 +39,12 @@ bash scripts/setup_data.sh
 
 ## Result Reproduction
 
-Edit three values in `scripts/run_benchmark.sh`:
+Run the following for benchmarking:
 
 ```bash
-BASE_CONFIG="../configs/base/resnet18/mean_teacher_boundary_aware.yaml"
-BENCH_CONFIG="../configs/bench/ludb/1over16.yaml"
-MODE="single"  # single | distributed
-```
+cd semi-seg-ecg
 
-Then run:
-
-```bash
-bash scripts/run_benchmark.sh
-```
-
-The base config selects boundary-aware Mean Teacher with ResNet-18 and a U-Net
-decoder. The benchmark YAML overrides the base YAML. For cross-domain training,
-set `BENCH_CONFIG="../configs/bench/cross_domain/merged.yaml"`.
-
-Keep all other settings in YAML: data paths, seed, epochs, batch size, learning
-rate, output directory, experiment name, and resume checkpoint. For distributed
-training on one computer, set `ddp.world_size` to the number of GPUs to use.
-All relative paths resolve from `semi-seg-ecg/src`.
-
-The launcher preserves `CUDA_VISIBLE_DEVICES`. It selects which GPUs are visible;
-`ddp.world_size` controls how many training processes the distributed launcher starts.
-Visible GPUs are renumbered starting at zero, so keep `device: cuda` in both modes.
-See [NVIDIA's device-selection documentation](https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/environment-variables.html#cuda-visible-devices).
-
-Single-GPU example: add these settings to the benchmark YAML, keeping its existing
-dataset block. The base config supplies all remaining settings.
-
-```yaml
-exp_name: ludb/1over16_single
-device: cuda
-dataloader:
-  batch_size: 16
-ddp:
-  world_size: 1
-```
-
-Use these values in `scripts/run_benchmark.sh`:
-
-```bash
-BASE_CONFIG="../configs/base/resnet18/mean_teacher_boundary_aware.yaml"
-BENCH_CONFIG="../configs/bench/ludb/1over16.yaml"
-MODE="single"
-```
-
-Run on GPU 2 from the repository root:
-
-```bash
-CUDA_VISIBLE_DEVICES=2 bash scripts/run_benchmark.sh
-```
-
-Two-GPU example: use these benchmark settings instead, keeping the same dataset block:
-
-```yaml
-exp_name: ludb/1over16_distributed
-device: cuda
-dataloader:
-  batch_size: 8
-ddp:
-  world_size: 2
-```
-
-Keep the same config paths and set `MODE="distributed"` in the script. Run:
-
-```bash
-CUDA_VISIBLE_DEVICES=2,3 bash scripts/run_benchmark.sh
-```
-
-Batch size is per GPU. These examples keep 16 labeled and 16 unlabeled samples per
-training step across GPUs, with the base config's `accum_iter: 1`. Match
-`ddp.world_size` to the visible GPU count when using all selected GPUs. Training
-initializes `ddp.rank`, `ddp.gpu`, and `ddp.distributed`; leave their base values alone.
-
-Training runs testing once afterward using `test.target_metric` to select the
-saved student checkpoint. Set `test: false` to skip testing. To test an existing
-checkpoint separately, set `test.model_path` in YAML and run:
-
-```bash
-cd semi-seg-ecg/src
-python test.py \
-  -f ../configs/base/resnet18/mean_teacher_boundary_aware.yaml \
-  -o ../configs/bench/ludb/1over16.yaml
+bash scripts/train.sh -f ../configs/base/resnet18/mean_teacher_boundary_aware.yaml -o ../configs/bench/isp/1over2.yaml
 ```
 
 ## Citations
