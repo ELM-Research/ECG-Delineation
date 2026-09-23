@@ -59,7 +59,7 @@ To evaluate a saved checkpoint without retraining, run the following:
 
 ```bash
 
-bash scripts/train.sh \
+bash scripts/test.sh \
 -f ../configs/base/resnet18/mean_teacher_boundary_aware.yaml \
 -o ../configs/bench/isp/1over2.yaml \
 --model_path $PATH_TO_PTH
