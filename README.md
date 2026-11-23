@@ -65,6 +65,8 @@ bash scripts/test.sh \
 --model_path $PATH_TO_PTH
 ```
 
+We have released saved checkpoints for our model at this [google drive link](https://drive.google.com/drive/folders/1ibiinN5J4n74QF8KdCCDGi_wEGyu6XZU?usp=sharing). Feel free to use them!
+
 ## Citations
 If this work has helped you please cite the following:
 
